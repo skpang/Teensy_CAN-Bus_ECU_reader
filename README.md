@@ -11,4 +11,5 @@
  * Also requres new FlexCAN libarary
  * https://github.com/collin80/FlexCAN_Library
  * 
+ * Project details and video https://www.skptechnology.co.uk/teensy-canbus-ecu-reader-with-oled-display/ 
  * /
