@@ -57,7 +57,10 @@ void setup() {
   display.setCursor(0,55);
   display.println("      kph         rpm");  
   display.display(); 
-
+  old_ecu.engine_rpm = -1;
+  old_ecu.coolant_temp = 0;
+  old_ecu.vehicle_speed = -1;
+  old_ecu.throttle_position = -1;
 }
 
 void loop() {
@@ -90,7 +93,8 @@ void loop() {
               
           }
   }   
-     
+  delay(10);   
+  
   if(ecu_reader.request(ENGINE_COOLANT_TEMP,&engine_data) == 1)
   {
      if(engine_data != old_ecu.coolant_temp)
@@ -106,7 +110,8 @@ void loop() {
         old_ecu.coolant_temp = engine_data;
      }
   }
-        
+  delay(10);    
+  
   if(ecu_reader.request(VEHICLE_SPEED,&engine_data) == 1)
   {
     if(engine_data != old_ecu.vehicle_speed)
@@ -128,7 +133,8 @@ void loop() {
         old_ecu.vehicle_speed = engine_data;
      }
   }
-   
+  delay(10);
+  
   if(ecu_reader.request(THROTTLE,&engine_data) ==1 )
   {
       if(engine_data != old_ecu.throttle_position)
@@ -143,7 +149,6 @@ void loop() {
         old_ecu.throttle_position = engine_data;
      } 
   }   
-  
-  delay(100);
+  delay(10);
   
 }
