@@ -31,9 +31,11 @@ uint8_t ecu_reader_class::request(uint8_t pid,  int *engine_data)
   can_MsgTx.buf[6] = 0;  
   can_MsgTx.buf[7] = 0;
   can_MsgTx.len = 8; 
-  can_MsgTx.ext = 0; 
+  //can_MsgTx.ext = 0; 
+  can_MsgTx.flags.extended = 0; 
+  can_MsgTx.flags.remote = 0;
   can_MsgTx.id = PID_REQUEST;
-  can_MsgTx.timeout = 500;
+//  can_MsgTx.timeout = 500;
   Can0.write(can_MsgTx);  
 
   elapsedMillis waiting;     // "waiting" starts at zero
